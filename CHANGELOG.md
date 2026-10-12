@@ -1,6 +1,27 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/ai/compare/v1.2.0...1.x)
+## [Unreleased](https://github.com/laravel/ai/compare/v1.2.1...1.x)
+
+## [v1.2.1](https://github.com/laravel/ai/compare/v1.2.0...v1.2.1) - 2026-10-12
+
+### What's Changed
+
+* Keep CopyFile from copying directories by [@yognevoy](https://github.com/yognevoy) in https://github.com/laravel/ai/pull/1109
+* Replay OpenRouter reasoning details in tool loops by [@CamilleScholtz](https://github.com/CamilleScholtz) in https://github.com/laravel/ai/pull/1110
+* Add Stop middleware to end agent runs early by [@pushpak1300](https://github.com/pushpak1300) in https://github.com/laravel/ai/pull/1072
+* Decode structured output with unescaped quotes in object keys by [@augusto-dmh](https://github.com/augusto-dmh) in https://github.com/laravel/ai/pull/1111
+* Fix terminal Responses API stream handling by [@Marwzoor](https://github.com/Marwzoor) in https://github.com/laravel/ai/pull/1113
+* Use OpenRouter images endpoint for image generation by [@pushpak1300](https://github.com/pushpak1300) in https://github.com/laravel/ai/pull/1116
+* [1.x] Use Ollama's native embedding dimensions when none are configured by [@medilies](https://github.com/medilies) in https://github.com/laravel/ai/pull/1115
+* Retry once after a short Retry-After before failing over by [@augusto-dmh](https://github.com/augusto-dmh) in https://github.com/laravel/ai/pull/1112
+
+### New Contributors
+
+* [@augusto-dmh](https://github.com/augusto-dmh) made their first contribution in https://github.com/laravel/ai/pull/1111
+* [@Marwzoor](https://github.com/Marwzoor) made their first contribution in https://github.com/laravel/ai/pull/1113
+* [@medilies](https://github.com/medilies) made their first contribution in https://github.com/laravel/ai/pull/1115
+
+**Full Changelog**: https://github.com/laravel/ai/compare/v1.2.0...v1.2.1
 
 ## [v1.2.0](https://github.com/laravel/ai/compare/v1.1.0...v1.2.0) - 2026-10-07
 
