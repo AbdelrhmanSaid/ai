@@ -6,12 +6,14 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 use Laravel\Ai\Ai;
 use Laravel\Ai\Contracts\Question;
+use Laravel\Ai\Events\ClassificationFailed;
 use Laravel\Ai\Events\Classified;
 use Laravel\Ai\Events\Classifying;
 use Laravel\Ai\Files\File;
 use Laravel\Ai\Prompts\ClassificationPrompt;
 use Laravel\Ai\Responses\ClassificationResponse;
 use LogicException;
+use Throwable;
 
 trait Classifies
 {
@@ -43,14 +45,17 @@ trait Classifies
             $invocationId, $this, $model, $prompt,
         ));
 
-        return tap($this->classificationGateway()->classify(
-            $this,
-            $model,
-            $state,
-            $questions,
-            $timeout,
-            $providerOptions,
-            $attachments,
+        return tap($this->dispatchingFailure(
+            fn () => $this->classificationGateway()->classify(
+                $this,
+                $model,
+                $state,
+                $questions,
+                $timeout,
+                $providerOptions,
+                $attachments,
+            ),
+            fn (Throwable $exception) => new ClassificationFailed($invocationId, $this, $model, $prompt, $exception),
         ), fn (ClassificationResponse $response) => $this->events->dispatch(new Classified(
             $invocationId, $this, $model, $prompt, $response,
         )));
