@@ -1,6 +1,22 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/ai/compare/v1.2.1...1.x)
+## [Unreleased](https://github.com/laravel/ai/compare/v1.2.2...1.x)
+
+## [v1.2.2](https://github.com/laravel/ai/compare/v1.2.1...v1.2.2) - 2026-10-14
+
+### What's Changed
+
+* [1.x] Run structured sub-agents unstreamed when the parent streams by [@medilies](https://github.com/medilies) in https://github.com/laravel/ai/pull/1117
+* Add classification to the OpenAI-compatible provider by [@pushpak1300](https://github.com/pushpak1300) in https://github.com/laravel/ai/pull/1128
+* Dispatch failure events for model operations by [@edgrosvenor](https://github.com/edgrosvenor) in https://github.com/laravel/ai/pull/1090
+* Remove security policy in favor of the org-wide default by [@pushpak1300](https://github.com/pushpak1300) in https://github.com/laravel/ai/pull/1132
+* Keep the call id on a failed turn's interrupted tool result by [@pushpak1300](https://github.com/pushpak1300) in https://github.com/laravel/ai/pull/1133
+
+### New Contributors
+
+* [@edgrosvenor](https://github.com/edgrosvenor) made their first contribution in https://github.com/laravel/ai/pull/1090
+
+**Full Changelog**: https://github.com/laravel/ai/compare/v1.2.1...v1.2.2
 
 ## [v1.2.1](https://github.com/laravel/ai/compare/v1.2.0...v1.2.1) - 2026-10-12
 
