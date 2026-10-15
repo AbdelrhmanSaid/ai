@@ -143,7 +143,7 @@ test('image attachments are sent inline with the state as a user message', funct
     ]]);
 });
 
-test('remote and stored images are downloaded and sent inline', function (): void {
+test('remote and stored images are downloaded and sent inline after their name labels', function (): void {
     Http::fake([
         'example.com/*' => Http::response('remote-bytes', 200, ['Content-Type' => 'image/gif']),
         '*' => Http::response(fakeOpenAiDecisionsResponse()),
@@ -160,7 +160,9 @@ test('remote and stored images are downloaded and sent inline', function (): voi
 
     Http::assertSent(fn (Request $request): bool => $request->url() === 'https://api.openai.com/v1/decisions'
         && array_slice(json_decode($request->body(), true)['input'][0]['content'], 1) === [
+            ['type' => 'input_text', 'text' => 'front:'],
             ['type' => 'input_image', 'image_url' => 'data:image/gif;base64,'.base64_encode('remote-bytes')],
+            ['type' => 'input_text', 'text' => 'back:'],
             ['type' => 'input_image', 'image_url' => 'data:image/png;base64,'.base64_encode('stored-bytes')],
         ]);
 });
@@ -221,13 +223,13 @@ test('classification uses the configured classification model', function (): voi
 });
 
 test('attachments fail loudly instead of failing over to a provider that cannot classify them', function (): void {
-    config(['ai.providers.typesafe.key' => 'test-key']);
+    registerTextOnlyClassifier();
 
     Http::fake(['api.openai.com/*' => Http::response([], 503)]);
 
     expect(fn () => Classification::of('Inspect this.', [Image::fromBase64(base64_encode('photo'), 'image/png')])
         ->question('damaged', new Boolean('Damaged?'))
-        ->classify(provider: ['openai', 'typesafe']))->toThrow(LogicException::class, 'Provider [typesafe] does not support classification attachments.');
+        ->classify(provider: ['openai', 'text-only']))->toThrow(LogicException::class, 'Provider [text-only] does not support classification attachments.');
 
     Http::assertSentCount(1);
 });
