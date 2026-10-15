@@ -1,6 +1,15 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/ai/compare/v1.2.2...1.x)
+## [Unreleased](https://github.com/laravel/ai/compare/v1.2.3...1.x)
+
+## [v1.2.3](https://github.com/laravel/ai/compare/v1.2.2...v1.2.3) - 2026-10-15
+
+### What's Changed
+
+* Keep conversation models non-incrementing on Laravel 12 by [@lazerg](https://github.com/lazerg) in https://github.com/laravel/ai/pull/1137
+* Classify image attachments with TypeSafe and OpenRouter by [@pushpak1300](https://github.com/pushpak1300) in https://github.com/laravel/ai/pull/1134
+
+**Full Changelog**: https://github.com/laravel/ai/compare/v1.2.2...v1.2.3
 
 ## [v1.2.2](https://github.com/laravel/ai/compare/v1.2.1...v1.2.2) - 2026-10-14
 
