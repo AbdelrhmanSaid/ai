@@ -240,7 +240,7 @@ class BedrockTextGateway implements EmbeddingGateway, StepTextGateway
             finishReason: $finishReason,
             usage: $usage,
             meta: new Meta($provider->name(), $model),
-            structured: $structured ? $this->decodeStructuredOutput($structuredOutput ?? $output) : null,
+            structured: $structuredOutput !== null ? $this->decodeStructuredOutput($structuredOutput) : null,
             replayBlocks: $replayBlocks,
             reasoning: $this->extractReasoning($replayBlocks),
         );
